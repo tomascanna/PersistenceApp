@@ -1,10 +1,12 @@
 package entidades;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity @Table(name = "Articulo")
-public class Articulo {
+public class Articulo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,8 +14,8 @@ public class Articulo {
     private int cantidad;
     @Column(name = "precio")
     private int precio;
-    @OneToMany(mappedBy = "factura")
-    private ArrayList<DetalleFactura> detalleFactura = new ArrayList<DetalleFactura>();
+    @OneToMany(mappedBy = "articulo")
+    private List<DetalleFactura> detalleFactura = new ArrayList<DetalleFactura>();
     public Articulo() {
     }
 
@@ -29,11 +31,11 @@ public class Articulo {
         this.detalleFactura = detalleFactura;
     }
 
-    public ArrayList<DetalleFactura> getDetalleFactura() {
+    public List<DetalleFactura> getDetalleFactura() {
         return detalleFactura;
     }
 
-    public void setDetalleFactura(ArrayList<DetalleFactura> detalleFactura) {
+    public void setDetalleFactura(List<DetalleFactura> detalleFactura) {
         this.detalleFactura = detalleFactura;
     }
 

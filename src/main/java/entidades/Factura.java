@@ -3,6 +3,7 @@ package entidades;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity @Table(name = "Factura")
 public class Factura implements Serializable {
@@ -20,7 +21,7 @@ public class Factura implements Serializable {
     @JoinColumn(name = "fk_cliente")
     private Cliente cliente;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private ArrayList<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
+    private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
     public Factura() {
     }
 
@@ -38,6 +39,21 @@ public class Factura implements Serializable {
         this.cliente = cliente;
     }
 
+    public Factura(String fecha, int numero, int total, Cliente cliente, List<DetalleFactura> detalles) {
+        this.fecha = fecha;
+        this.numero = numero;
+        this.total = total;
+        this.cliente = cliente;
+        this.detalles = detalles;
+    }
+
+    public List<DetalleFactura> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(List<DetalleFactura> detalles) {
+        this.detalles = detalles;
+    }
 
     public Cliente getCliente() {
         return cliente;

@@ -1,9 +1,11 @@
 package entidades;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 
 @Entity @Table(name = "detalle_factura")
-public class DetalleFactura {
+public class DetalleFactura implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
