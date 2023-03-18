@@ -1,8 +1,10 @@
 package entidades;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 
-@Entity @Table(name = "Domicilio")
+@Entity @Table(name = "Domicilio") @Audited
 public class Domicilio {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

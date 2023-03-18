@@ -1,11 +1,13 @@
 package entidades;
 
+import org.hibernate.envers.Audited;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity @Table(name = "Factura")
+@Entity @Table(name = "Factura") @Audited
 public class Factura implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
