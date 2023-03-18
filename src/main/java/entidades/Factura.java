@@ -20,8 +20,12 @@ public class Factura implements Serializable {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "fk_cliente")
     private Cliente cliente;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
+
+    @OneToMany(mappedBy ="factura", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
+
     public Factura() {
     }
 

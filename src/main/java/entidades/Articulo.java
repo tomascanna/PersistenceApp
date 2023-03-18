@@ -16,6 +16,12 @@ public class Articulo implements Serializable {
     private int precio;
     @OneToMany(mappedBy = "articulo")
     private List<DetalleFactura> detalleFactura = new ArrayList<DetalleFactura>();
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "articulo_categoria",
+                joinColumns = @JoinColumn(name = "articulo"),
+                inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+    private List<Categoria> categorias = new ArrayList<Categoria>();
     public Articulo() {
     }
 
